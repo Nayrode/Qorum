@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ApiService } from '../api-service.service';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-auth',
@@ -10,18 +9,16 @@ import { ApiService } from '../api-service.service';
   styleUrl: './auth.component.css',
 })
 export class AuthComponent {
-  constructor(private apiService: ApiService) {}
+  constructor() {}
 
   userDetails = {
     username: '',
     password: ''
   };
 
-  submitForm(form: any): void {
+  submitForm(form: NgForm): void {
     if (form.valid) {
-      this.apiService.login(this.userDetails).subscribe((data: any[]) => {
-        console.log(data)
-      });;
+      console.log(this.userDetails);
     }
   }
 }
