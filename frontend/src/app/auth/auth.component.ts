@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,7 +10,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './auth.component.css',
 })
 export class AuthComponent {
-  constructor() {}
+  constructor(private authService : AuthService) {}
 
   userDetails = {
     username: '',
@@ -18,7 +19,7 @@ export class AuthComponent {
 
   submitForm(form: NgForm): void {
     if (form.valid) {
-      console.log(this.userDetails);
+      this.authService.login(this.userDetails);
     }
   }
 }
