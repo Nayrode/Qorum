@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { TokenRequest } from '../model/auth.token.request';
 import { TokenResponse } from '../model/auth.token.response';
 
@@ -8,19 +8,35 @@ import { TokenResponse } from '../model/auth.token.response';
   providedIn: 'root'
 })
 export class AuthService {
-
+  
   constructor(private http: HttpClient) {}
-
+  
   readonly url = 'http://localhost:3000';
-
+  private isAuthenticated = false;
+  
+  isAuthenticatedUser() {
+    return this.isAuthenticated;
+  }
   getAccessToken(): string | null{
     return localStorage.getItem('accessStorage');
   }
 
-  login(data: TokenRequest) {
-    this.http.post<TokenResponse>(`${this.url}/auth/login`, data).subscribe((res) => {
-      console.log(res.accessToken)
-      localStorage.setItem('accessToken', res.accessToken);
-    });
+  login(data: TokenRequest): Observable<boolean> {
+    return this.http.post<TokenResponse>(`${this.url}/auth/login`, data).pipe(
+      map((res) => {
+        localStorage.setItem('accessToken', res.accessToken);
+        this.isAuthenticated = true;
+        return true;
+      }),
+      catchError(() => {
+        this.isAuthenticated = false;
+        return of(false);
+      })
+    );
+  }
+
+  logout(): void {
+    localStorage.removeItem('accessToken');
+    this.isAuthenticated = false;
   }
 }
