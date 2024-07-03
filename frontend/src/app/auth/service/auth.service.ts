@@ -18,7 +18,7 @@ export class AuthService {
     return this.isAuthenticated;
   }
   getAccessToken(): string | null{
-    return localStorage.getItem('accessStorage');
+    return localStorage.getItem('accessToken');
   }
 
   login(data: TokenRequest): Observable<boolean> {
