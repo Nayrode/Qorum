@@ -1,22 +1,16 @@
 # Qorum
 
-Bonjour monsieur,
-je me suis heurté à un bug majeur que je n'ai pas réussi à résoudre dans les temps,
-cependant, j'ai essayé de faire la globalité de l'exercice, en espérant que cela vous conviendra.
-Il y a juste l'affichage des posts qui ne fonctionne pas, je n'ai pas réussi à trouver la solution.
-
-Merci de votre compréhension.
-Bonne journée.
+I got a problem with the frontend and displaying the posts doesnt work for some reasons, I'm sorry for that.
 
 ## Installation
 
-Pour installer la db :
+To install the db :
 
 ```bash
 docker compose up -d
 ```
 
-Pour installer le projet :
+To install the project :
 
 ```bash
 cd frontend
@@ -27,7 +21,7 @@ npm install
 npm start
 ```
 
-N'oubliez pas de fournir un .env dans le dossier backend avec les informations suivantes :
+Don't forget to provide a .env in the backend file with those informations :
 
 ```bash
 DATABASE_URL="postgresql://postgres:postgres@localhost:5432/backend?schema=public"
