@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Subject } from '../subject/model/subject.model';
 import { TimeAgoPipe } from './timeago';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'subject-item',
@@ -12,9 +13,9 @@ import { TimeAgoPipe } from './timeago';
 export class SubjectItemComponent {
   @Input() subject: Subject = {} as Subject;
 
-  constructor() { }
+  constructor(private readonly router : Router) { }
 
   onClick() {
-    console.log('Subject clicked');
+    this.router.navigate(['subject', this.subject.id]);
   }
 }

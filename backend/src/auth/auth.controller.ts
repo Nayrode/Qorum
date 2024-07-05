@@ -18,6 +18,8 @@ export class AuthController {
   async login(@Body() data: LoginDto) {
     if (!this.authService.validateUser(data.username, data.password))
       throw new UnauthorizedException();
-    return { accessToken: this.authService.generateAccessToken(data.username) };
+    return {
+      accessToken: await this.authService.generateAccessToken(data.username),
+    };
   }
 }

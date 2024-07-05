@@ -13,9 +13,11 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const user_service_1 = require("../user/user.service");
 const jsonwebtoken_1 = require("jsonwebtoken");
+const prisma_service_1 = require("../prisma/prisma.service");
 let AuthService = class AuthService {
-    constructor(usersService) {
+    constructor(usersService, prisma) {
         this.usersService = usersService;
+        this.prisma = prisma;
     }
     validateUser(username, pass) {
         const user = this.usersService.findOne(username);
@@ -24,9 +26,17 @@ let AuthService = class AuthService {
         }
         return false;
     }
-    generateAccessToken(user) {
+    async generateAccessToken(username) {
         const appKey = process.env.APP_KEY;
-        const payload = { username: user };
+        const user = await this.prisma.user.findUnique({
+            where: {
+                name: username,
+            },
+        });
+        if (!user) {
+            return null;
+        }
+        const payload = { username: user.name, id: user.id };
         const accessToken = (0, jsonwebtoken_1.sign)(payload, appKey);
         return accessToken;
     }
@@ -34,6 +44,7 @@ let AuthService = class AuthService {
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [user_service_1.UserService])
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        prisma_service_1.PrismaService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

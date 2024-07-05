@@ -28,6 +28,6 @@ export class SubjectComponent {
   }
 
   onNewSubject() {
-    this.router.navigate(['subject', 'create']);
+    this.router.navigate(['subject']);
   }
 }

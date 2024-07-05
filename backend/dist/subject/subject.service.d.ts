@@ -11,7 +11,8 @@ export declare class SubjectService {
     findAll(): Promise<{
         id: string;
         name: string;
+        postCount: number;
         createdAt: Date;
-        updatedAt: Date;
     }[]>;
+    findNumberOfPosts(subjectId: string): Promise<number>;
 }

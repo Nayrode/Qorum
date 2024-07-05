@@ -28,6 +28,14 @@ export class AuthService {
     return JSON.parse(atob(token.split('.')[1])).username;
   }
 
+  getCurrentId() {
+    const token = localStorage.getItem('accessToken');
+    if (!token) {
+      return null;
+    }
+    return JSON.parse(atob(token.split('.')[1])).id;
+  }
+
   login(data: TokenRequest): Observable<boolean> {
     return this.http.post<TokenResponse>(`${this.url}/auth/login`, data).pipe(
       map((res) => {

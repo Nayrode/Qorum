@@ -23,7 +23,9 @@ let AuthController = class AuthController {
     async login(data) {
         if (!this.authService.validateUser(data.username, data.password))
             throw new common_1.UnauthorizedException();
-        return { accessToken: this.authService.generateAccessToken(data.username) };
+        return {
+            accessToken: await this.authService.generateAccessToken(data.username),
+        };
     }
 };
 exports.AuthController = AuthController;

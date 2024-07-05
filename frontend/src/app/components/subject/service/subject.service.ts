@@ -13,4 +13,7 @@ export class SubjectService {
   getSubjects(): Observable<any> {
     return this.http.get(`${this.url}/subject`);
   }
+  createSubjects(name: string): Observable<any> {
+    return this.http.post(`${this.url}/subject/${name}`, {});
+  }
 }

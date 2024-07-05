@@ -1,34 +1,34 @@
-<main class="h-screen flex justify-center items-center bg-slate-50 px-4">
-    <div class="flex flex-col justify-center items-center gap-3 w-[500px]">
-      <layout-bar class="w-full pb-[44px] gap-" />
+<main class="h-screen flex justify-center items-center bg-gray-100 px-4">
+  <div class="flex flex-col justify-center items-center gap-6 w-[400px]">
+      <layout-bar class="w-full pb-11" />
       <div class="flex flex-row justify-between w-full gap-3">
-        <button
-          (click)="onNewSubject()"
-          class="btn text-white bg-primary/75 text-primary-foreground hover:bg-primary h-9 p-2 pr-3 gap-2 whitespace-nowrap"
-        >
-          <lucide-angular name="plus" class="my-icon"></lucide-angular>
-          <p>New Subject</p>
-        </button>
+          <button
+              (click)="onNewSubject()"
+              class="bg-blue-500 hover:bg-blue-600 text-white rounded-md h-9 p-2 pr-3 gap-2 whitespace-nowrap flex flex-row"
+          >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+              <p>New Subject</p>
+          </button>
       </div>
       <div class="flex flex-row justify-between w-full gap-3">
-        <div class="text-content w-3/6 h-9 px-4 py-2 font-medium underline">
-          Subject
-        </div>
-        <div class="text-content w-2/6 h-9 px-4 py-2 font-medium underline">
-          Posts
-        </div>
-        <div class="text-content w-2/6 h-9 px-4 py-2 font-medium underline">
-          Date
-        </div>
+          <div class="text-gray-600 w-3/6 h-9 px-4 py-2 font-medium underline">
+              Subject
+          </div>
+          <div class="text-gray-600 w-2/6 h-9 px-4 py-2 font-medium underline">
+              Posts
+          </div>
+          <div class="text-gray-600 w-2/6 h-9 px-4 py-2 font-medium underline">
+              Date
+          </div>
       </div>
       <p
-        *ngIf="subjects.length === 0"
-        class="text-content flex justify-center w-full h-9 cursor-not-allowed text-primary/50"
+          *ngIf="subjects.length === 0"
+          class="text-gray-500 flex justify-center w-full h-9 cursor-not-allowed"
       >
-        No subject for the moment.
+          No subject for the moment.
       </p>
       <ng-container *ngFor="let subject of subjects">
-        <subject-item class="w-full" [subject]="subject"></subject-item>
+          <subject-item class="w-full" [subject]="subject"></subject-item>
       </ng-container>
-    </div>
-  </main>
+  </div>
+</main>

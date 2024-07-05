@@ -11,7 +11,7 @@ export declare class SubjectController {
     findAll(): Promise<{
         id: string;
         name: string;
+        postCount: number;
         createdAt: Date;
-        updatedAt: Date;
     }[]>;
 }

@@ -1,7 +1,9 @@
 import { UserService } from 'src/user/user.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 export declare class AuthService {
     private usersService;
-    constructor(usersService: UserService);
+    private readonly prisma;
+    constructor(usersService: UserService, prisma: PrismaService);
     validateUser(username: string, pass: string): boolean;
-    generateAccessToken(user: string): string;
+    generateAccessToken(username: string): Promise<string | null>;
 }
