@@ -18,6 +18,7 @@ npm install
 npm start
 cd ../backend
 npm install
+npx prisma generate
 npm start
 ```
 
