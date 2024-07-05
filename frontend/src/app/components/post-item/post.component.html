@@ -9,21 +9,21 @@
         *ngIf="post.authorId !== userId"
         class="text-gray-600 px-4 text-left h-9 font-medium w-fit"
       >
-        {{ userEmail }}
+        {{ username }}
       </p>
       <button
         *ngIf="post.authorId === userId"
         (click)="onEdit()"
         class="bg-white text-gray-600 hover:bg-gray-200 rounded-md h-9 p-2 flex gap-2"
       >
-        <lucide-angular name="pen" class="my-icon"></lucide-angular>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/></svg>
       </button>
       <button
         *ngIf="post.authorId === userId"
         (click)="onDelete()"
         class="bg-white text-gray-600 hover:bg-gray-200 rounded-md h-9 p-2 flex gap-2"
       >
-        <lucide-angular name="x" class="my-icon"></lucide-angular>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
     <p class="text-gray-600 px-4 break-words truncate text-left">

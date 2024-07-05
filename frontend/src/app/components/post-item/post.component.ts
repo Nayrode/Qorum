@@ -3,19 +3,21 @@ import { Post } from './model/post.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/service/auth.service';
 import { PostService } from './service/post.service';
+import { NgIf } from '@angular/common';
+import { PostListComponent } from '../post-list/post-list.component';
 
 @Component({
-  selector: 'app-post',
+  selector: 'post-item',
   standalone: true,
-  imports: [],
+  imports: [NgIf, PostListComponent],
   templateUrl: './post.component.html',
   styleUrl: './post.component.css'
 })
 export class PostComponent {
   @Input() post!: Post;
   userId: string | null = null;
-  userEmail!: string;
-  threadId: string | null = null;
+  username!: string;
+  subjectId: string | null = null;
 
   constructor(
     private router: Router,
@@ -26,23 +28,20 @@ export class PostComponent {
 
   async ngOnInit() {
     this.userId = this.authService.getCurrentId();
-    this.userEmail = (
-      await this.authService.getUserById(this.post.authorId)
-    ).email;
-    this.threadId = this.route.snapshot.paramMap.get('id') || '';
+    this.username = this.authService.getCurrentUser();
+    this.subjectId = this.route.snapshot.paramMap.get('id') || '';
   }
 
   onDelete() {
-    this.postsService.deletePostById(this.post.id);
+    this.postService.deletePostById(this.post.id);
   }
 
   onEdit() {
     this.router.navigate([
-      'threads',
-      this.threadId,
-      'posts',
-      this.post.id,
-      'edit',
+      'subject',
+      this.subjectId,
+      'post',
+      this.post.id
     ]);
   }
 }

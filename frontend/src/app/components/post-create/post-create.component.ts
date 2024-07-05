@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LayoutBarComponent } from '../layout-bar/layout-bar.component';
-import { PostService } from '../post/service/post.service';
+import { PostService } from '../post-item/service/post.service';
 import { AuthService } from '../auth/service/auth.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { AuthService } from '../auth/service/auth.service';
   standalone: true,
   imports: [FormsModule, LayoutBarComponent],
   templateUrl: './post-create.component.html',
-  styleUrl: './post-create.component.css'
+  styleUrl: './post-create.component.css',
 })
 export class PostCreateComponent {
   subjectId: string | null = null;

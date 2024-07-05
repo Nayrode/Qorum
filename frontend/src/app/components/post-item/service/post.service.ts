@@ -7,6 +7,12 @@ import { Post } from '../model/post.model';
   providedIn: 'root',
 })
 export class PostService {
+  getPostsBySubjectId(id: string): Post[] | PromiseLike<Post[]> {
+    throw new Error('Method not implemented.');
+  }
+  deletePostById(id: string) {
+    throw new Error('Method not implemented.');
+  }
   constructor(private http: HttpClient) {}
   readonly url = 'http://localhost:3000';
 

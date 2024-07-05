@@ -33,7 +33,7 @@ export class AuthService {
     if (!token) {
       return null;
     }
-    return JSON.parse(atob(token.split('.')[1])).id;
+    return JSON.parse(atob(token.split('.')[1])).userId;
   }
 
   login(data: TokenRequest): Observable<boolean> {

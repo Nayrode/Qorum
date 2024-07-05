@@ -1,6 +1,6 @@
 export interface Subject {
-    id: String
-    name: String
+    id: string
+    name: string
     postCount: Number
     createdAt: Date
-}
+}String

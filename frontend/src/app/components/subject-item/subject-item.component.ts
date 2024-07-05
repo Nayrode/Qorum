@@ -16,6 +16,7 @@ export class SubjectItemComponent {
   constructor(private readonly router : Router) { }
 
   onClick() {
+    console.log('SubjectItemComponent onClick');
     this.router.navigate(['subject', this.subject.id]);
   }
 }
