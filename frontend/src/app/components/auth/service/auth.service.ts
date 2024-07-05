@@ -20,6 +20,13 @@ export class AuthService {
   getAccessToken(): string | null{
     return localStorage.getItem('accessToken');
   }
+  getCurrentUser() {
+    const token = localStorage.getItem('accessToken');
+    if (!token) {
+      return null;
+    }
+    return JSON.parse(atob(token.split('.')[1])).username;
+  }
 
   login(data: TokenRequest): Observable<boolean> {
     return this.http.post<TokenResponse>(`${this.url}/auth/login`, data).pipe(
